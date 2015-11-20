@@ -1,0 +1,65 @@
+extends layout
+
+block content
+	div.container
+		div.row
+			div.col-sm-10.col-md-10.col-md-offset-1
+				#user
+					h1.text-center.login-title Welcome #{user.username}. Search your events history below:
+						div.signup-wall
+							h3 Search Options
+							#searchEvent
+								form#formSearchEvent(name="searchevent",method="get",action="/searchevent")
+									t1.text From Date ->
+									input#inputStartDate(type='date', name='Startdate', placeholder='Start Date')
+									input#inputEndDate(type='date', name='Enddate', placeholder='End Date')
+									t1.text <- To Date
+									br
+									t1.text Start Time ->
+									input#inputStarttime(type='time', name='Starttime', placeholder='Start time')
+									input#inputEndtime(type='time',name='Endtime', placeholder='End time')
+									t1.text <- To Time
+									br
+									input#inputLocation(type='text',name='Location', placeholder='Location', size='18')
+									input#inputDescription(type='text',name='Description', placeholder='Description')
+									br
+									button#btnAddEvent(style='width: 427px; background-color: orange;') Search
+							br
+							h2 Search Result
+							#searchList
+									table
+										thead
+											tr.head
+												th #
+												th Date
+												th Start time
+												th End time
+												th Location
+												th Description
+												th ?
+												th ?
+											tbody
+												each event, i in events
+													td #{i+1}
+													td #{event.date}
+													td #{event.start_time}
+													td #{event.end_time}
+													td #{event.location}
+													td #{event.description}
+													td
+														form#formDeleteEvent(name="deleteevent",method='post', action='/#{event._id}?_method=delete')
+															input#inputeventID(type='hidden',value=event._id,name='eventID')
+															button#btnDelete(style='background-color: orange;',type='Delete') Delete
+													td
+														form#formUpdateEvent(name="editevent",method="get", action="/edit")
+															input#inputeventID(type='hidden',value=event._id,name='eventID2')
+															button#btnEdit(style='background-color: orange;',type='Edit') Edit
+													tr
+
+									br
+							br
+							div(align='center')
+								br
+								a(href='/home', class='button') Back
+								| &nbsp; | &nbsp;
+								a(href='/signout', class='button') Sign Out

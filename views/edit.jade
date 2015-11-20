@@ -1,0 +1,28 @@
+extends layout
+
+block content
+	div.container
+		div.row
+			div.col-sm-10.col-md-10.col-md-offset-1
+				#user
+					h1.text-center.login-title Welcome #{user.username} Please update selected event below:
+						div.signup-wall
+							h3 Update Options
+							#updateEvent
+								form#formUpdateEvent(name="updateevent",method="post",action='/update?_method=put')
+									input#inputDate(type='date', name='Date',value=event.date, placeholder='Date')
+									input#inputStarttime(type='time', name='Starttime',value=event.start_time, placeholder='Start time')
+									input#inputEndtime(type='time',name='Endtime',value=event.end_time, placeholder='End time')
+									br
+									input#inputLocation(type='text',name='Location',value=event.location, placeholder='Location', size='18')
+									input#inputDescription(type='text',name='Description',value=event.description, placeholder='Description')
+									br
+									input#inputeventID(type='hidden',value=event._id,name='eventID2')
+									button#btnUpdateEvent(style='width: 427px; background-color: orange;') Update
+							br
+							br
+							div(align='center')
+								br
+								a(href='/home', class='button') Back
+								| &nbsp; | &nbsp;
+								a(href='/signout', class='button') Sign Out

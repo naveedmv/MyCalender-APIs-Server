@@ -1,0 +1,33 @@
+extends layout
+
+block content
+	div.container
+		div.row
+			div.col-sm-10.col-md-10.col-md-offset-1
+				#user
+					h1.text-center.login-title Welcome #{user.username}. Search your events history below:
+						div.signup-wall
+							h3 Search Options
+							#searchEvent
+								form#formSearchEvent(name="searchevent",method="get",action="/searchevent")
+									t1.text From Date ->
+									input#inputStartDate(type='date', name='Startdate', placeholder='Start Date')
+									input#inputEndDate(type='date', name='Enddate', placeholder='End Date')
+									t1.text <- To Date
+									br
+									t1.text Start Time ->
+									input#inputStarttime(type='time', name='Starttime', placeholder='Start time')
+									input#inputEndtime(type='time',name='Endtime', placeholder='End time')
+									t1.text <- To Time
+									br
+									input#inputLocation(type='text',name='Location', placeholder='Location', size='18')
+									input#inputDescription(type='text',name='Description', placeholder='Description')
+									br
+									button#btnAddEvent(style='width: 427px; background-color: orange;') Search
+									br
+							br
+							div(align='center')
+								br
+								a(href='/home', class='button') Back
+								| &nbsp; | &nbsp;
+								a(href='/signout', class='button') Sign Out

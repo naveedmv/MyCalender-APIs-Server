@@ -1,0 +1,158 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.form-signin{
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading, .form-signin .checkbox{
+    margin-bottom: 10px;
+}
+.form-signin .checkbox{
+    font-weight: normal;
+}
+.form-signin .form-control{
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.form-signin .form-control:focus{
+    z-index: 2;
+}
+.form-signin input[type="text"]{
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"]{
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.form-signin input[type="password"].nomargin{
+	margin-bottom: 0px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.account-wall{
+    margin-top: 20px;
+    padding: 40px 0px 20px 0px;
+    background-color: #f7f7f7;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.signup-wall{
+	margin-top: 20px;
+    padding: 20px 0px 20px 0px;
+    background-color: #f7f7f7;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);	
+}
+.login-title{
+    color: #555;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+}
+.profile-img{
+    width: auto;
+    height: auto;
+}
+.new-account{
+    display: block;
+    margin-top: 10px;
+}
+h1.error-message{
+    color: red;
+}
+ul.user-details{
+    list-style: none;
+}
+
+#eventList {
+	margin:auto;
+}
+	#eventList table {
+		border-collapse:separate;
+        padding-left:30px;
+		border-spacing:1px;
+		background:#;
+	}
+		#eventList table th {
+            color:#f7f7f7;
+			background:#777777;
+			font-weight:600;
+			padding:10px 20px;
+			text-align:center;
+		}
+		#eventList table tbody {
+			padding:0; margin:0;
+			border-collapse:collapse;
+			border-spacing:0px;
+		}
+			#eventList table td {
+				background:#bbbbbb;
+				padding:5px 10px;
+				text-align:center;
+			}
+
+#searchList {
+    margin:auto;
+}
+    #searchList table {
+        border-collapse:separate;
+        padding-left:30px;
+        border-spacing:1px;
+        background:#;
+    }
+        #searchList table th {
+            color:#f7f7f7;
+            background:#777777;
+            font-weight:600;
+            padding:10px 20px;
+            text-align:center;
+        }
+        #searchList table tbody {
+        padding:0; margin:0;
+        border-collapse:collapse;
+        border-spacing:0px;
+        }
+            #searchList table td {
+            background:#bbbbbb;
+            padding:5px 10px;
+            text-align:center;
+            }
+
+#btnDelete {
+    color: red;
+}
+#btnEdit {
+    color: darkgreen;
+}
+
+#btnAddEvent {
+    color: blue;
+}
+
+#btnUpdateEvent {
+    color: blue;
+}
+
+fieldset {
+	border:0;
+	padding:0; margin:0;
+}
+	

@@ -1,0 +1,59 @@
+extends layout
+
+block content
+	div.container
+		div.row
+			div.col-sm-10.col-md-10.col-md-offset-1
+				#user
+					h1.text-center.login-title Welcome #{user.username}. Check your event details below:
+						div.signup-wall
+							h2 Events List
+							#eventList
+								table#usereventslist
+										thead
+											tr.head
+												th #
+												th Date
+												th Start time
+												th End time
+												th Location
+												th Description
+												th ?
+												th ?
+											tbody
+												each event, i in events
+													td #{i+1}
+													td #{event.date}
+													td #{event.start_time}
+													td #{event.end_time}
+													td #{event.location}
+													td #{event.description}
+													td
+														form#formDeleteEvent(name="deleteevent",method='post', action='/#{event._id}?_method=delete')
+															input#inputeventID(type='hidden',value=event._id,name='eventID')
+															button#btnDelete(style='background-color: orange;',type='Delete') Delete
+													td
+														form#formUpdateEvent(name="editevent",method="get", action="/edit")
+															input#inputeventID(type='hidden',value=event._id,name='eventID2')
+															button#btnEdit(style='background-color: orange;',type='Edit') Edit
+													tr
+
+							h3 Add Event
+							#addEvent
+								form#formAddEvent(name="addevent",method="post",action="/addevent")
+									input#inputDate(type='date', placeholder='Date', name='Date',required)
+									input#inputStarttime(type='time', placeholder='Start time', name='Starttime',required)
+									input#inputStarttime(type='time', placeholder='End time', name='Endtime',required)
+									br
+									input#inputLocation(type='text', placeholder='Location', size='18',name='Location',required)
+									input#inputDescription(type='text', placeholder='Description',name='Description',required)
+									br
+									button#btnAddEvent(style='width: 427px; background-color: orange;',type="Add Event") Add Event
+									br
+									br
+							br
+							div(align='center')
+								br
+								a(href='/search', class='button') Search
+								| &nbsp; | &nbsp;
+								a(href='/signout', class='button') Sign Out

@@ -1,0 +1,18 @@
+//index.js file
+router.post('/delete', isAuthenticated, function(req,res) {
+		Event.findByIdAndRemove(req.body.eventID,function(err) {
+			if (err) throw err;
+
+			console.log('Event deleted!');
+			res.redirect('/home');
+		});
+	});
+
+
+
+
+
+//home.jade file
+form#formDeleteEvent(name="deleteevent",method="post", action="/delete")
+	input#inputeventID(type='hidden',value=event._id,name='eventID')
+	button#btnDelete(style='background-color: orange;',type='Delete') Delete
