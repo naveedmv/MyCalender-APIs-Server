@@ -9,7 +9,7 @@ var User = require('../model/user');
 module.exports = function(passport){
 
 	router.get('/', function(req, res) {
-		res.send({LoginMessage:'Please Login with username and password at http://localhost:3000/login' , LoginErrorMessage: req.flash('message') });
+		res.send({LoginMessage:'Please Login with username and password at http://130.233.42.143:8080/login' , LoginErrorMessage: req.flash('message') });
 	});
 
 	router.post('/login', passport.authenticate('login', { // home view
