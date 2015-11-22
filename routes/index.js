@@ -23,7 +23,9 @@ module.exports = function(passport){
 	});
 
 	router.get('/userNotFound', function(req, res){
-		res.json({"success":false, "message": req.flash('message')});
+		var invalidmessage = req.flash('message');
+		var invalidstring= "Invalid Username or Password"
+		res.json({"success":false, "message": invalidstring });
 	});
 
 	router.get('/signout', function(req, res) {
