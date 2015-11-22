@@ -23,7 +23,7 @@ module.exports = function(passport){
 	});
 
 	router.get('/userNotFound', function(req, res){
-		res.json({"success":false, "message": req.flash('message'));
+		res.json({"success":false, "message": req.flash('message')});
 	});
 
 	router.get('/signout', function(req, res) {
