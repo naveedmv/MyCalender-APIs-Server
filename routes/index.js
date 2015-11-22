@@ -19,7 +19,8 @@ module.exports = function(passport){
 	}));
 
 	router.get('/userFound', function(req, res){
-		res.json({"success":true});
+		var validstring= "Valid Username and Password"
+		res.json({"success":true,"message": validstring});
 	});
 
 	router.get('/userNotFound', function(req, res){
