@@ -13,10 +13,18 @@ module.exports = function(passport){
 	});
 
 	router.post('/login', passport.authenticate('login', { // home view
-		successRedirect: '/eventlist',
-		failureRedirect: '/',
+		successRedirect: '/userFound',
+		failureRedirect: '/userNotFound',
 		failureFlash : true
 	}));
+
+	router.get('/userFound', function(req, res){
+		res.json({"success":true});
+	});
+
+	router.get('/userNotFound', function(req, res){
+		res.json({"success":false, "message": req.flash('message')});
+	});
 
 	router.get('/signout', function(req, res) {
 		req.logout();
