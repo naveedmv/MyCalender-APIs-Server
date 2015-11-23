@@ -64,49 +64,42 @@ module.exports = function(passport){
 	/*
 	 * POST to addevent.
 	 */
-	router.post('/addevent', function(req, res) {
-		var event = new Event() ;
+	router.post('/addevent', isAuthenticated, function(req, res) {
 
-		event.user = req.user;
-		if(req.body.date) {
-			event.date = req.body.date;
-		}
-		else{
-			return res.send('Event date Missing!')
-		}
-		if(req.body.start_time) {
-			event.start_time = req.body.start_time;
-		}
-		else{
-			return res.send('Event start_time Missing!')
-		}
-		if(req.body.end_time) {
-			event.end_time = req.body.end_time;
-		}
-		else{
-			return res.send('Event end_time Missing!')
-		}
-		if(req.body.location) {
-			event.location = req.body.location;
-		}
-		else{
-			return res.send('Event location Missing!')
-		}
-		if(req.body.description) {
-			event.description = req.body.description;
-		}
-		else{
-			return res.send('Event description Missing!')
-		}
+		var event2add = new Event();
+		event2add.from_date = req.body.from_date;
+		event2add.to_date = req.body.to_date;
+		event2add.start_time = req.body.start_time;
+		event2add.end_time = req.body.end_time;
+		event2add.location = req.body.location;
+		event2add.description = req.body.description;
+		event2add.user = req.user;
+		if(req.body.google_id) {event2add.google_id = req.body.google_id};
 
-		event.save(function(err) {
-			if (err) {
-				console.log('Error in Saving New Event: '+err);
-				throw err;
+		var savedEvents= AllEvents;
+		var flag=0;
+		for (i = 0; i < savedEvents.length; i++){
+			if(event2add.from_date==savedEvents[i].from_date && event2add.to_date==savedEvents[i].to_date && event2add.start_time==savedEvents[i].start_time
+				&& event2add.end_time==savedEvents[i].end_time && event2add.location==savedEvents[i].location && event2add.description==savedEvents[i].description) {
+				flag=1;
 			}
-			console.log('Event Added!');
-			res.send('Event Added! : '+event);
-		});
+		}
+
+		if(flag===0) { //event does not exist
+			event2add.save(function(err) {
+				if (err) {
+					console.log('Error in Saving New Event: '+err);
+					throw err;
+				}
+				console.log('Event Added!');
+				console.log(event2add);
+				res.json("exists":false);
+			});
+		}
+		else if (flag===1) {
+			console.log('Event Exists!');
+			res.json({"exists":true});
+		}
 	});
 
 	/*
