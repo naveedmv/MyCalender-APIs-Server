@@ -19,13 +19,13 @@ module.exports = function(passport){
 	}));
 
 	router.get('/userFound', function(req, res){
-		var validUser= "Valid Username and Password"
+		var validUser= "Valid Username and Password!";
 		res.json({"success":true,"message": validUser, "user":req.user});
 	});
 
 	router.get('/userNotFound', function(req, res){
 		var invalidmessage = req.flash('message');
-		var invalidUser= "Invalid Username or Password"
+		var invalidUser= "Invalid Username or Password!";
 		res.json({"success":false, "message": invalidUser });
 	});
 	
@@ -41,7 +41,7 @@ module.exports = function(passport){
 	});
 
 	router.get('/userNotRegistered', function(req, res){
-		var userAddedError= "Username Already Exists!";
+		var userAddError= "Username Already Exists!";
 		res.json({"success":false, "message": userAddError});
 	});
 
