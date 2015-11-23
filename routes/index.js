@@ -36,12 +36,12 @@ module.exports = function(passport){
 	}));
 	
 	router.get('/userRegistered', function(req, res){
-		var userAdded= "User Successfully Added!"
+		var userAdded= "User Successfully Added!";
 		res.json({"success":true, "message": userAdded});
 	});
 
 	router.get('/userNotRegistered', function(req, res){
-		var userAddedError= "Username Already Exists!"
+		var userAddedError= "Username Already Exists!";
 		res.json({"success":false, "message": userAddError});
 	});
 
