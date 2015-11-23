@@ -93,12 +93,12 @@ module.exports = function(passport){
 				}
 				console.log('Event Added!');
 				console.log(event2add);
-				res.json({"exists":false});
+				res.json({"exists":false, "message": "Event Added"});
 			});
 		}
 		else if (flag===1) {
 			console.log('Event Exists!');
-			res.json({"exists":true});
+			res.json({"exists":true, "message": "Event Exists!Not Added"});
 		}
 	});
 
