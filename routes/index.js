@@ -19,14 +19,30 @@ module.exports = function(passport){
 	}));
 
 	router.get('/userFound', function(req, res){
-		var validstring= "Valid Username and Password"
-		res.json({"success":true,"message": validstring});
+		var validUser= "Valid Username and Password"
+		res.json({"success":true,"message": validUser, "user":req.user});
 	});
 
 	router.get('/userNotFound', function(req, res){
 		var invalidmessage = req.flash('message');
-		var invalidstring= "Invalid Username or Password"
-		res.json({"success":false, "message": invalidstring });
+		var invalidUser= "Invalid Username or Password"
+		res.json({"success":false, "message": invalidUser });
+	});
+	
+	router.post('/signup', passport.authenticate('signup', {
+		successRedirect: '/userRegistered',
+		failureRedirect: '/userNotRegistered',
+		failureFlash : true
+	}));
+	
+	router.get('/userRegistered', function(req, res){
+		var userAdded= "User Successfully Added!"
+		res.json({"success":true, "message": userAdded});
+	});
+
+	router.get('/userNotRegistered', function(req, res){
+		var userAddedError= "Username Already Exists!"
+		res.json({"success":false, "message": userAddError});
 	});
 
 	router.get('/signout', function(req, res) {
