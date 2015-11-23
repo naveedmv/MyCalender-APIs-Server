@@ -93,7 +93,7 @@ module.exports = function(passport){
 				}
 				console.log('Event Added!');
 				console.log(event2add);
-				res.json("exists":false);
+				res.json({"exists":false});
 			});
 		}
 		else if (flag===1) {
