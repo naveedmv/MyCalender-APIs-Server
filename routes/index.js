@@ -4,6 +4,12 @@ var router = express.Router();
 var Event = require('../model/event');
 var User = require('../model/user');
 
+var isAuthenticated = function (req, res, next) {
+	if (req.isAuthenticated())
+		return next();
+	res.redirect('/');
+}
+
 
 module.exports = function(passport){
 
@@ -17,7 +23,7 @@ module.exports = function(passport){
 		failureFlash : true
 	}));
 
-	router.get('/userFound', function(req, res){
+	router.get('/userFound',isAuthenticated function(req, res){
 		var validUser= "Valid Username and Password!";
 		console.log(req.user);
 		res.json({"user":req.user,"success":true,"message": validUser});
@@ -64,7 +70,7 @@ module.exports = function(passport){
 	/*
 	 * POST to addevent.
 	 */
-	router.post('/addevent', function(req, res) {
+	router.post('/addevent', isAuthenticated, function(req, res) {
 
 		var event2add = new Event();
 		event2add.from_date = req.body.from_date;
