@@ -81,7 +81,7 @@ module.exports = function(passport){
 		event2add.end_time = req.body.end_time;
 		event2add.location = req.body.location;
 		event2add.description = req.body.description;
-		event2add.user = req.user;
+		event2add.user = req.body.user;
 		if(req.body.google_id) {event2add.google_id = req.body.google_id};
 
 		var savedEvents= AllEvents;
