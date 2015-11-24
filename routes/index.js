@@ -23,7 +23,7 @@ module.exports = function(passport){
 		failureFlash : true
 	}));
 
-	router.get('/userFound',isAuthenticated function(req, res){
+	router.get('/userFound',isAuthenticated, function(req, res){
 		var validUser= "Valid Username and Password!";
 		console.log(req.user);
 		res.json({"user":req.user,"success":true,"message": validUser});
