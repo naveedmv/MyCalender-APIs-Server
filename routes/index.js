@@ -4,11 +4,6 @@ var router = express.Router();
 var Event = require('../model/event');
 var User = require('../model/user');
 
-var isAuthenticated = function (req, res, next) {
-	if (req.isAuthenticated())
-		return next();
-	res.redirect('/');
-}
 
 module.exports = function(passport){
 
@@ -24,6 +19,7 @@ module.exports = function(passport){
 
 	router.get('/userFound', function(req, res){
 		var validUser= "Valid Username and Password!";
+		console.log(req.user);
 		res.json({"user":req.user,"success":true,"message": validUser});
 	});
 
