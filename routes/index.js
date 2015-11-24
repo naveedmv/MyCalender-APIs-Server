@@ -65,6 +65,7 @@ module.exports = function(passport){
 	router.get('/eventlist', isAuthenticated, function(req, res) {
 		Event.find({user: req.user}).exec(function(e,docs){
 			console.log(docs);
+			AllEvents=docs;
 			res.json(docs);
 		});
 	});
