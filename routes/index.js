@@ -72,7 +72,7 @@ module.exports = function(passport){
 	/*
 	 * POST to addevent.
 	 */
-	router.post('/addevent', isAuthenticated, function(req, res) {
+	router.post('/addevent', function(req, res) {
 
 		var event2add = new Event();
 		event2add.from_date = req.body.from_date;
