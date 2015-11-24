@@ -10,6 +10,8 @@ var isAuthenticated = function (req, res, next) {
 	res.redirect('/');
 }
 
+var AllEvents=[];
+
 
 module.exports = function(passport){
 
