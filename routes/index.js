@@ -4,7 +4,11 @@ var router = express.Router();
 var Event = require('../model/event');
 var User = require('../model/user');
 
-
+var isAuthenticated = function (req, res, next) {
+	if (req.isAuthenticated())
+		return next();
+	res.redirect('/');
+}
 
 module.exports = function(passport){
 
@@ -18,7 +22,7 @@ module.exports = function(passport){
 		failureFlash : true
 	}));
 
-	router.get('/userFound', function(req, res){
+	router.get('/userFound', isAuthenticated, function(req, res){
 		var validUser= "Valid Username and Password!";
 		res.json({"success":true,"message": validUser, "user":req.user});
 	});
