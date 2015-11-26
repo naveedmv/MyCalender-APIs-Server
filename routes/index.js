@@ -119,7 +119,7 @@ module.exports = function(passport){
 			if (err) throw err;
 
 			console.log('Event with ID:'+req.params.id+' is deleted!');
-			res.send('Event with ID:'+ req.params.id+ ' is deleted!');
+			res.json({"message":"Event deleted!"});
 		});
 	});
 
@@ -137,7 +137,7 @@ module.exports = function(passport){
 			if (err) throw err;
 
 			console.log('Event with ID:'+req.params.id+' is updated!');
-			res.send('Event with ID:'+req.params.id+' is updated!');
+			res.json({"message":"Event updated!"});
 		});
 	});
 
