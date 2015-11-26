@@ -63,7 +63,7 @@ module.exports = function(passport){
 	 * GET to eventlist.
 	 */
 	router.get('/eventlist', function(req, res) {
-		Event.find({user: req.query.user}).exec(function(e,docs){
+		Event.find({user: req.query.user}).sort({'from_date': 'asc'}).exec(function(e,docs){
 			console.log(docs);
 			AllEvents=docs;
 			res.json(docs);
